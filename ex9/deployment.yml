@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: myapp:test1
+        image: myapp:v1
         ports:
         - containerPort: 4444
         resources:

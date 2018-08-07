@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: my-deployment
+  name: ex7-deployment
 spec:
   replicas: 2
   template:
@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: myapp:test1
+        image: myapp:v1
         ports:
         - containerPort: 4444

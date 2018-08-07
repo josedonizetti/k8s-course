@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-nginx2
+  name: ex3-pod
   labels:
-    name: my-nginx2
+    name: ex3-pod
 spec:
   containers:
-  - name: my-nginx2
+  - name: ex3-pod
     image: nginx:naoexiste
     ports:
     - name: http

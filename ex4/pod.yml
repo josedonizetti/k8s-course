@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-app
+  name: ex4-app
   labels:
-    name: my-app
+    name: ex4-app
 spec:
   containers:
   - name: my-nginx
@@ -11,8 +11,8 @@ spec:
     ports:
     - name: http
       containerPort: 80
-  - name: my-app
-    image: myapp:test1
+  - name: ex4-app
+    image: myapp:v1
     ports:
     - name: http
       containerPort: 4444
