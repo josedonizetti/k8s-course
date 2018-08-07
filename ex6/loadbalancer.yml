@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-lb
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 8083
+    targetPort: 4444
+  type: LoadBalancer
