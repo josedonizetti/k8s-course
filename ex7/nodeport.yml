@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-nodeport
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 8082
+    targetPort: 4444
+  type: NodePort
