@@ -1,7 +1,8 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ex14-deployment
+  name: ex17-deployment
+  namespace: production
 spec:
   replicas: 3
   strategy:

@@ -1,15 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ex17-deployment
-  namespace: production
+  name: ex11-deployment
 spec:
-  replicas: 3
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -19,7 +13,7 @@ spec:
       - name: my-app
         image: myapp:v2
         ports:
-        - containerPort: 5000
+        - containerPort: 8888
         resources:
           requests:
             cpu: 200m
@@ -30,15 +24,15 @@ spec:
         readinessProbe:
           httpGet:
             path: /health
-            port: 5000
+            port: 8888
           initialDelaySeconds: 1
           periodSeconds: 2
         livenessProbe:
           httpGet:
             path: /health
-            port: 5000
+            port: 8888
           initialDelaySeconds: 1
           periodSeconds: 2
         env:
           - name: PORT
-            value: "5000"
+            value: "8888"

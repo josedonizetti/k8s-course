@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ex11-deployment
+  name: ex12-deployment
 spec:
   replicas: 2
   template:
@@ -13,7 +13,7 @@ spec:
       - name: my-app
         image: myapp:v2
         ports:
-        - containerPort: 8888
+        - containerPort: 5000
         resources:
           requests:
             cpu: 200m
@@ -24,15 +24,15 @@ spec:
         readinessProbe:
           httpGet:
             path: /health
-            port: 4444
+            port: 5000
           initialDelaySeconds: 1
           periodSeconds: 2
         livenessProbe:
           httpGet:
             path: /health
-            port: 4444
+            port: 5000
           initialDelaySeconds: 1
           periodSeconds: 2
-        env:
-          - name: PORT
-            value: "8888"
+        envFrom:
+          - configMapRef:
+              name: myapp-ex12

@@ -3,21 +3,22 @@ kind: Deployment
 metadata:
   name: ex14-deployment
 spec:
-  replicas: 1
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
       labels:
         app: my-app
     spec:
-      volumes:
-      - name: nginx-config
-        configMap:
-          name: myapp-ex14
       containers:
-      - name: my-nginx
-        image: nginx:latest
+      - name: my-app
+        image: myapp:v2
         ports:
-        - containerPort: 11000
+        - containerPort: 5000
         resources:
           requests:
             cpu: 200m
@@ -25,8 +26,18 @@ spec:
           limits:
             cpu: 500m
             memory: 252Mi
-        volumeMounts:
-        - name: nginx-config
-          mountPath: /etc/nginx/nginx.conf
-          subPath: nginx.conf
-          readOnly: true
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 1
+          periodSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 1
+          periodSeconds: 2
+        env:
+          - name: PORT
+            value: "5000"
