@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ex8-deployment
+  name: ex9-deployment
 spec:
   replicas: 2
   template:
@@ -25,9 +25,11 @@ spec:
           httpGet:
             path: /health
             port: 4444
-          initialDelaySeconds: 5
-          periodSeconds: 5
+          initialDelaySeconds: 1
+          periodSeconds: 2
         livenessProbe:
           httpGet:
             path: /health
             port: 4444
+          initialDelaySeconds: 1
+          periodSeconds: 2
