@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: myapp-ex11
+  name: myapp-ex12
 data:
   ENV: "production"
   PORT: "5000"
