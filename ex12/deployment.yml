@@ -13,7 +13,7 @@ spec:
       - name: my-app
         image: myapp:v2
         ports:
-        - containerPort: 8888
+        - containerPort: 5000
         resources:
           requests:
             cpu: 200m
@@ -33,6 +33,6 @@ spec:
             port: 4444
           initialDelaySeconds: 1
           periodSeconds: 2
-        env:
-          - name: PORT
-            value: "8888"
+        envFrom:
+          - configMapRef:
+              name: myapp-ex11
